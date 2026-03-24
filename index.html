@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIY Auto Repair Estimator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family: Arial;
+padding:20px;
+background:#f5f5f5;
+}
+
+button{
+padding:10px;
+margin:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>DIY Auto Repair Estimator</h1>
+
+<select id="repairSelect"></select>
+
+<button onclick="runEstimate()">Estimate Repair</button>
+
+<pre id="result"></pre>
+
+<script src="app.js"></script>
+
+<script>
+
+const select = document.getElementById("repairSelect");
+
+Object.keys(repairs).forEach(r => {
+
+const option = document.createElement("option");
+option.value = r;
+option.text = r;
+
+select.appendChild(option);
+
+});
+
+function runEstimate(){
+
+const repair = select.value;
+
+const result = estimateRepair(repair);
+
+document.getElementById("result").innerText =
+JSON.stringify(result,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
